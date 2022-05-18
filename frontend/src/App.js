@@ -17,7 +17,7 @@ function App() {
         >
           Agile is about Values and Principles
         </a>
-        <h1>this is a title</h1>
+        <h1>this is a new test</h1>
       </header>
     </div>
   );
