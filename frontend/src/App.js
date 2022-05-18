@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
         >
           Agile is about Values and Principles
         </a>
+        <h1>this is a title</h1>
       </header>
     </div>
   );
