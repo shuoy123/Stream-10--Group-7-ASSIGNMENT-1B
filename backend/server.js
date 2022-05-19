@@ -1,23 +1,46 @@
-const express = require('express');
-var cors = require('cors');
-const mongooes = require('mongoose');
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+require("dotenv").config();
 
-require('dotenv').config();
+const cors = require("cors");
 
 const app = express();
+app.use(cors());
 
-app.use(cors({ origin: true, credentials: true }));
-app.use(express.json({ extended: false }));
+//import your models
+require("./models/quote");
 
-const uri = process.env.MONGODB_URI;
-mongooes.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
-const connection = mongooes.connection;
-connection.once('open', () => {
-    console.log("MongoDB connection established!");
-})
+mongoose
+  .connect(
+    process.env.MONGODB_CONNECTION_STRING,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
+  .then(() => console.log("MongoDB has been connected"))
+  .catch((err) => console.log(err));
 
-const port = process.env.PORT || 5000;
+//middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-})
+//import routes
+require("./routes/quoteRoute.js")(app);
+
+const PORT = process.env.PORT || 5000;
+
+// Accessing the path module
+const path = require("path");
+
+// Step 1:
+app.use(express.static(path.resolve(__dirname, "./client/build")));
+// Step 2:
+app.get("*", function (request, response) {
+  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
+
+app.listen(PORT, () => {
+  console.log(`server running on port ${PORT}`);
+});
