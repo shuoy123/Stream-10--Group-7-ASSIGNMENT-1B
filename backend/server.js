@@ -4,7 +4,7 @@ require("dotenv").config();
 const cors = require("cors");
 const app = express({ origin: true });
 app.use(cors());
-app.use(express.json); // json parser
+app.use(express.json()); // json parser
 const path = require("path");
 
 //import models
