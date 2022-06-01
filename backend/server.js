@@ -1,33 +1,33 @@
+require("dotenv").config({ path: "./.env" });
+
 const express = require("express");
-const mongoose = require("mongoose");
-require("dotenv").config();
+
+const app = express();
+
 const cors = require("cors");
-const app = express({ origin: true });
+
+//Creates links to model controllers
+
+const paper = require("./controllers/paperController");
+
+const connectDB = require("./db/conn");
+
+const port = process.env.PORT || 5000;
+
 app.use(cors());
-app.use(express.json()); // json parser
-const path = require("path");
 
-//import models
+app.use(express.json({ limit: "50mb" }));
 
-mongoose
-  .connect(process.env.MONGODB_CONNECTION_STRING, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("MongoDB has been connected"))
-  .catch((err) => console.log(err));
+app.post("./createPaper", paper.createOne);
 
-//import routes
+// perform a database connection when server starts
 
-const PORT = process.env.PORT || 5000;
+connectDB();
 
-// Step 1:
-app.use(express.static(path.resolve(__dirname, "./client/build")));
-// Step 2:
-app.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+app.listen(port, () => {
+  console.log(`Server is running on port: ${port}`);
 });
 
-app.listen(PORT, () => {
-  console.log(`server running on port ${PORT}`);
+app.get("/", (req, res) => {
+  res.send({ message: "we did it" });
 });
