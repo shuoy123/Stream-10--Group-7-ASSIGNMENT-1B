@@ -13,11 +13,6 @@ app.use(express.json({ limit: "50mb" }));
 //routes
 app.use("/api/articles", require("./routes/articleRoutes"));
 
-//app.post("./createPaper", paper.createOne);
-app.get("/", (req, res) => {
-  res.send({ message: "we did it" });
-});
-
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
