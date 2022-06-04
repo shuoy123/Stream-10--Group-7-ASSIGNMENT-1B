@@ -10,9 +10,9 @@ const getArticles = asyncHandler(async (req, res) => {
 
 // create article
 const createArticle = asyncHandler(async (req, res) => {
-  if (req.body.title) {
+  if (!req.body.title) {
     res.status(400);
-    throw new Error("Not all fieds filled");
+    throw new Error("Not all fields filled");
   }
 
   const article = await Article.create({

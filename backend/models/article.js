@@ -36,7 +36,7 @@ const articleSchema = new mongoose.Schema({
   },
 
   doi: {
-    type: Number,
+    type: String,
     required: [true],
   },
 });
