@@ -8,15 +8,19 @@ const FindForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-    <p>Input the keyword to find the artical</p>
-    <p>Title:<input {...register("title")} placeholder="Title" /></p>
-    <p>Author<input {...register("authors")} placeholder="Authors" /></p>
-    <p>Journal<input {...register("journal")} placeholder="Journal" /></p>
-     
-     
- 
-      <input type="submit" value="Find"/>
+      <p>Input the keyword to find the artical</p>
+      <p>
+        Title: <input {...register("title")} placeholder="Title" />
+      </p>
+      <p>
+        Author: <input {...register("authors")} placeholder="Authors" />
+      </p>
+      <p>
+        Journal: <input {...register("journal")} placeholder="Journal" />
+      </p>
+
+      <input type="submit" value="Find" />
     </form>
   );
-}
+};
 export default FindForm;
