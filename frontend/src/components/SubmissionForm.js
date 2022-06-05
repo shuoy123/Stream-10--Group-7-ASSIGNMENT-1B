@@ -15,9 +15,9 @@ const SubmissionForm = () => {
       volume: data.volume,
       number: data.number,
       doi: data.doi,
+    }).then((response) => {
+      alert("Article Submitted");
     });
-
-    alert("Article Submitted");
   };
 
   return (
