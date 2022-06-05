@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Axios from "axios";
 import articles from "../dummydata/articles";
 
-//import FindForm from "../components/FindForm.js";
 const FindArticle = () => {
   const [listOfArticles, setListOfArticles] = useState([]);
   useEffect(() => {
@@ -39,8 +38,6 @@ const FindArticle = () => {
           );
         })}
       </div>
-
-      {/* <FindForm/> */}
     </div>
   );
 };
