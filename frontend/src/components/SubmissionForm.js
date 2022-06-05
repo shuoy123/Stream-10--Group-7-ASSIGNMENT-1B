@@ -15,6 +15,9 @@ const SubmissionForm = () => {
       volume: data.volume,
       number: data.number,
       doi: data.doi,
+      practice: data.practice,
+      claim: data.claim,
+      evidence: data.evidence,
     }).then((response) => {
       alert("Article Submitted");
     });
@@ -51,6 +54,18 @@ const SubmissionForm = () => {
       <p>
         DOI
         <input {...register("doi")} placeholder="DOI" />
+      </p>
+      <p>
+        practice
+        <input {...register("practice")} placeholder="practice" />
+      </p>
+      <p>
+        claim
+        <input {...register("claim")} placeholder="claim" />
+      </p>
+      <p>
+        evidence
+        <input {...register("evidence")} placeholder="evidence" />
       </p>
       <input type="submit" />
     </form>
