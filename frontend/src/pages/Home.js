@@ -4,9 +4,9 @@ class Home extends Component {
     return (
       <div>
         <h2> Stream-10--Group-7-ASSIGNMENT-1B</h2>
-        <p>Shuo Yang</p>
-        <p>Liam Burr-Knight</p>
-        <p>Poyan Payandeh</p>
+        <p>Shuo Yang: 18021794</p>
+        <p>Liam Burr-Knight: 15912409</p>
+        <p>Poyan Payandeh: 19041318</p>
       </div>
     );
   }
