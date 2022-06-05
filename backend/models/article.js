@@ -39,6 +39,21 @@ const articleSchema = new mongoose.Schema({
     type: String,
     required: [true],
   },
+
+  practice: {
+    type: String,
+    required: [true],
+  },
+
+  claim: {
+    type: String,
+    required: [true],
+  },
+
+  evidence: {
+    type: String,
+    required: [true],
+  },
 });
 
 module.exports = mongoose.model("Article", articleSchema);

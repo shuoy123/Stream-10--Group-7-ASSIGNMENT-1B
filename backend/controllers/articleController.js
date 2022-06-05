@@ -1,5 +1,6 @@
 const Article = require("../models/article");
 const asyncHandler = require("express-async-handler");
+const { deepStrictEqual } = require("assert");
 
 // get articles
 const getArticles = asyncHandler(async (req, res) => {
@@ -23,6 +24,9 @@ const createArticle = asyncHandler(async (req, res) => {
     volume: req.body.volume,
     number: req.body.number,
     doi: req.body.doi,
+    practice: req.body.practice,
+    claim: req.body.claim,
+    evidence: req.body.evidence,
   });
 
   res.json(article);
